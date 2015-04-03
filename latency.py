@@ -25,4 +25,3 @@ while True:
         print ts, name, ping
         with open("results/" + name + '.txt', 'a') as out:
             out.write(ts + '\t' + str(ping) + '\n')
-        time.sleep(100)
