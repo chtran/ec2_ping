@@ -28,7 +28,7 @@ while True:
             ts = str(datetime.datetime.now())
             #print ts, name, ping
             count +=1
-            if count % 1000 = 0:
+            if count % 1000 == 0:
                 print ts, host_name, count
             with open("results/" + name + '.txt', 'a') as out:
                 out.write(ts + '\t' + str(ping) + '\n')
