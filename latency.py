@@ -1,4 +1,5 @@
 import datetime
+import sys
 import time
 import random
 import urllib
@@ -8,6 +9,8 @@ DATA_CENTERS_FILE = 'config/datacenters.txt'
 
 urls = {}
 files = {}
+host_name = sys.argv[1]
+count = 0
 
 with open(DATA_CENTERS_FILE) as f:
     for line in f:
@@ -16,12 +19,18 @@ with open(DATA_CENTERS_FILE) as f:
 
 while True:
     for name, url in urls.iteritems():
-        start = time.time()
-        nf = urllib.urlopen(url)
-        end = time.time()
-        nf.close()
-        ping = 1000*(end-start) # in ms
-        ts = str(datetime.datetime.now())
-        print ts, name, ping
-        with open("results/" + name + '.txt', 'a') as out:
-            out.write(ts + '\t' + str(ping) + '\n')
+        try:
+            start = time.time()
+            nf = urllib.urlopen(url)
+            end = time.time()
+            nf.close()
+            ping = 1000*(end-start) # in ms
+            ts = str(datetime.datetime.now())
+            #print ts, name, ping
+            count +=1
+            if count % 1000 = 0:
+                print ts, host_name, count
+            with open("results/" + name + '.txt', 'a') as out:
+                out.write(ts + '\t' + str(ping) + '\n')
+        except IOError:
+            pass
