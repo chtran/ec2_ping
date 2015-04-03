@@ -6,7 +6,7 @@ CONFIG_FILE = "config/ec2_hosts.txt"
 
 def get_cmd(mode, ip, region):
     if mode == "restart":
-        return "ssh ec2-user@%s -i keys/%s.pem 'rm -rf *; wget https://github.com/chtran/ec2_ping/archive/master.zip; unzip master.zip; cd ec2_ping-master/; python latency.py'" % (ip, region)
+        return "ssh ec2-user@%s -i keys/%s.pem 'rm -rf *; wget https://github.com/chtran/ec2_ping/archive/master.zip; unzip master.zip; cd ec2_ping-master/; python latency.py %s'" % (ip, region, region)
     elif mode is "continue":
         return "ssh ec2-user@%s -i keys/%s.pem 'cd ec2_ping-master/; python latency.py'" % (ip, region)
 
