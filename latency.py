@@ -26,11 +26,12 @@ while True:
             nf.close()
             ping = 1000*(end-start) # in ms
             ts = str(datetime.datetime.now())
-            #print ts, name, ping
+            print ts, name, ping
             count +=1
             if count % 10 == 0:
                 print ts, host_name, count
             with open("results/" + name + '.txt', 'a') as out:
                 out.write(ts + '\t' + str(ping) + '\n')
+            time.sleep(0.5)
         except IOError:
             pass
