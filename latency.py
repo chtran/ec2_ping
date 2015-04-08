@@ -32,6 +32,6 @@ while True:
                 print ts, host_name, count
             with open("results/" + name + '.txt', 'a') as out:
                 out.write(ts + '\t' + str(ping) + '\n')
-            time.sleep(0.5)
+            time.sleep(1)
         except IOError:
             pass
